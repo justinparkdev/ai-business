@@ -1,0 +1,6 @@
+productName = "Nike"
+price = 120
+discount = 0.15
+print = ("productName " + "year I will be " + str(discount) + ". " + "After " + str(discount) + ", you pay " + str(discount x price))
+
+
