@@ -1,10 +1,10 @@
 from datetime import datetime
 import os
 
-def build_estimate_text(description, materials, hours, rate):
+def build_estimate_text(description, materials, hours, rate, margin=20):
     labor_total = hours * rate
     subtotal = materials + labor_total
-    profit = subtotal * 0.20
+    profit = subtotal * (margin / 100)
     total = subtotal + profit
 
     lines = [
@@ -18,7 +18,7 @@ def build_estimate_text(description, materials, hours, rate):
         f"Labor Cost      : $ {labor_total:10,.2f}",
         "                    ------------",
         f"Subtotal        : $ {subtotal:10,.2f}",
-        f"Profit (20%)    : $ {profit:10,.2f}",
+        f"Profit ({margin}%)   : $ {profit:10,.2f}",
         "                    ------------",
         f"TOTAL ESTIMATE  : $ {total:10,.2f}",
         "================================================",
@@ -43,7 +43,10 @@ while True:
     user_hours = float(input("Enter labor hours: "))
     user_rate = float(input("Enter hourly rate: $"))
 
-    estimate_text, total = build_estimate_text(user_job, user_mats, user_hours, user_rate)
+    margin_input = input("Enter your desired profit margin % (press Enter for default 20%): ").strip()
+    user_margin = float(margin_input) if margin_input else 20
+
+    estimate_text, total = build_estimate_text(user_job, user_mats, user_hours, user_rate, user_margin)
 
     # Print to screen
     print("\n" + estimate_text + "\n")
