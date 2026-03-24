@@ -20,6 +20,43 @@ LOG_FILE = "message_log.csv"
 MAX_SMS_LENGTH = 160
 
 
+# ─── TEXT NORMALIZATION ───────────────────────────────────────────────────────
+
+def normalize_text(text: str) -> str:
+    """
+    Convert Unicode punctuation to standard ASCII equivalents.
+    Prevents smart quotes and other Unicode chars from being misread.
+    """
+    return (text
+        .replace('\u2019', "'")   # right single quotation mark → apostrophe
+        .replace('\u2018', "'")   # left single quotation mark  → apostrophe
+        .replace('\u2032', "'")   # prime                       → apostrophe
+        .replace('\u201c', '"')   # left double quotation mark  → "
+        .replace('\u201d', '"')   # right double quotation mark → "
+        .replace('\u2014', '-')   # em dash                     → hyphen
+        .replace('\u2013', '-'))  # en dash                     → hyphen
+
+
+def fix_business_name(message: str, business_name: str) -> str:
+    """
+    Replace any garbled version of the business name with the exact correct string.
+
+    Claude occasionally substitutes characters (e.g. ';' for "'") or mis-capitalizes
+    the business name. This regex matches the name case-insensitively and treats
+    special characters (apostrophes, hyphens, etc.) as wildcards so they match
+    whatever substitution Claude produced.
+    """
+    special_chars = set("'\"\\-.,&!?")
+    pattern_parts = []
+    for char in business_name:
+        if char in special_chars:
+            pattern_parts.append('.')       # match any single char in that position
+        else:
+            pattern_parts.append(re.escape(char))
+    pattern = ''.join(pattern_parts)
+    return re.sub(pattern, business_name, message, flags=re.IGNORECASE)
+
+
 # ─── PHONE VALIDATION ─────────────────────────────────────────────────────────
 
 def validate_phone(phone: str) -> bool:
@@ -150,6 +187,9 @@ Strict rules:
 
     results = []
     for msg in messages:
+        # Fix Unicode punctuation and any garbled business name from Claude
+        msg = normalize_text(msg)
+        msg = fix_business_name(msg, business_name)
         # Guarantee the link placeholder is present
         if not msg.endswith("[REVIEW_LINK]"):
             msg = msg.rstrip() + " [REVIEW_LINK]"
@@ -196,6 +236,7 @@ def get_customer_inputs() -> dict:
         if business:
             break
         print("  ! Business name is required.")
+    business = normalize_text(business)   # fix smart quotes typed on Mac keyboards
 
     return {
         "customer_name": name,
