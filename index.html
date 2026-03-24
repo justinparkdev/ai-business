@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apex Construction</title>
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      color: #1a1a1a;
+      background: #fff;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 6%;
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(8px);
+    }
+    .nav-logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.5px;
+    }
+    .nav-logo span { color: #f59e0b; }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
+    }
+    nav ul a {
+      text-decoration: none;
+      color: #ccc;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav ul a:hover { color: #f59e0b; }
+
+    /* ── Hero ── */
+    #hero {
+      min-height: 100vh;
+      background:
+        linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+        url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=80') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      padding: 0 6%;
+    }
+    .hero-content { max-width: 680px; }
+    .hero-badge {
+      display: inline-block;
+      background: #f59e0b;
+      color: #000;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+    .hero-content h1 {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+    }
+    .hero-content h1 span { color: #f59e0b; }
+    .hero-content p {
+      font-size: 1.15rem;
+      color: #ddd;
+      line-height: 1.7;
+      margin-bottom: 2.2rem;
+      max-width: 520px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 2.2rem;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: #f59e0b;
+      color: #000;
+    }
+    .btn-primary:hover { background: #d97706; }
+    .btn-outline {
+      border: 2px solid #fff;
+      color: #fff;
+      margin-left: 1rem;
+    }
+    .btn-outline:hover { background: #fff; color: #000; }
+
+    /* ── Section Base ── */
+    section { padding: 6rem 6%; }
+    .section-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #f59e0b;
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .section-sub {
+      font-size: 1.05rem;
+      color: #555;
+      max-width: 540px;
+      line-height: 1.7;
+      margin-bottom: 3rem;
+    }
+
+    /* ── Services ── */
+    #services { background: #f8f8f8; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .service-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 2rem;
+      border-top: 4px solid #f59e0b;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+    .service-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .service-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+    .service-card p {
+      font-size: 0.95rem;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* ── About ── */
+    #about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .about-image {
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+    }
+    .about-image img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      display: block;
+      border-radius: 8px;
+    }
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    .stat {
+      padding: 1.5rem;
+      background: #f8f8f8;
+      border-radius: 6px;
+      border-left: 4px solid #f59e0b;
+    }
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #f59e0b;
+    }
+    .stat-label {
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: 0.25rem;
+    }
+
+    /* ── Contact ── */
+    #contact { background: #0f0f0f; color: #fff; }
+    #contact .section-title { color: #fff; }
+    #contact .section-sub { color: #aaa; }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+    .contact-item { display: flex; gap: 1rem; align-items: flex-start; }
+    .contact-item-icon {
+      font-size: 1.3rem;
+      margin-top: 0.1rem;
+    }
+    .contact-item h4 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #f59e0b;
+      margin-bottom: 0.25rem;
+    }
+    .contact-item p { color: #ccc; font-size: 0.95rem; line-height: 1.5; }
+    form { display: flex; flex-direction: column; gap: 1rem; }
+    form input, form textarea {
+      background: #1e1e1e;
+      border: 1px solid #333;
+      border-radius: 4px;
+      padding: 0.9rem 1.1rem;
+      color: #fff;
+      font-size: 0.95rem;
+      font-family: inherit;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    form input:focus, form textarea:focus { border-color: #f59e0b; }
+    form input::placeholder, form textarea::placeholder { color: #666; }
+    form textarea { resize: vertical; min-height: 130px; }
+    form button {
+      align-self: flex-start;
+      border: none;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: #000;
+      color: #555;
+      text-align: center;
+      padding: 1.5rem 6%;
+      font-size: 0.88rem;
+    }
+    footer span { color: #f59e0b; }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      nav ul { display: none; }
+      #about { grid-template-columns: 1fr; gap: 2.5rem; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .btn-outline { margin-left: 0; margin-top: 1rem; display: inline-block; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="nav-logo">APEX <span>Construction</span></div>
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section id="hero">
+    <div class="hero-content">
+      <div class="hero-badge">Licensed &amp; Insured</div>
+      <h1>Built to Last.<br><span>Built for You.</span></h1>
+      <p>Apex Construction delivers high-quality residential and commercial projects on time and on budget. From foundations to finishes — we build with integrity.</p>
+      <a href="#contact" class="btn btn-primary">Get a Free Estimate</a>
+      <a href="#services" class="btn btn-outline">Our Services</a>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services">
+    <div class="section-label">What We Do</div>
+    <div class="section-title">Our Services</div>
+    <p class="section-sub">We handle every phase of construction with experienced crews and premium materials.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🏗️</div>
+        <h3>New Construction</h3>
+        <p>Ground-up residential and commercial builds, managed from permits to final walkthrough.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔨</div>
+        <h3>Renovations</h3>
+        <p>Kitchen, bathroom, basement, and full-home remodels that add value and transform spaces.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🪟</div>
+        <h3>Additions</h3>
+        <p>Expand your home with room additions, garage builds, and accessory dwelling units.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏢</div>
+        <h3>Commercial Build-Outs</h3>
+        <p>Office spaces, retail fit-outs, and light industrial construction built to code.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🧱</div>
+        <h3>Concrete &amp; Masonry</h3>
+        <p>Foundations, driveways, retaining walls, and decorative masonry work.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📋</div>
+        <h3>Project Management</h3>
+        <p>Full-service project oversight — scheduling, subcontractors, and client communication handled for you.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="about-image">
+      <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=900&q=80" alt="Construction crew at work" />
+    </div>
+    <div class="about-text">
+      <div class="section-label">Who We Are</div>
+      <div class="section-title">20 Years of Building What Matters</div>
+      <p class="section-sub" style="margin-bottom:1.5rem;">Apex Construction was founded on the belief that every client deserves honest communication, skilled craftsmanship, and a finished product they're proud of. We're not the biggest contractor in town — we're the most reliable one.</p>
+      <p style="color:#555; line-height:1.7; font-size:0.97rem;">Every project gets a dedicated project manager, a detailed written estimate, and a team that shows up when they say they will. We stand behind our work with a 2-year workmanship warranty on every job.</p>
+      <div class="about-stats">
+        <div class="stat">
+          <div class="stat-number">500+</div>
+          <div class="stat-label">Projects Completed</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">20yr</div>
+          <div class="stat-label">In Business</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">98%</div>
+          <div class="stat-label">Client Satisfaction</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">2yr</div>
+          <div class="stat-label">Workmanship Warranty</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="section-label">Reach Out</div>
+    <div class="section-title">Get a Free Estimate</div>
+    <p class="section-sub">Tell us about your project and we'll get back to you within one business day.</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-item-icon">📞</div>
+          <div>
+            <h4>Phone</h4>
+            <p>(555) 400-1234</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">✉️</div>
+          <div>
+            <h4>Email</h4>
+            <p>info@apexconstruction.com</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📍</div>
+          <div>
+            <h4>Office</h4>
+            <p>1200 Industrial Blvd<br>Suite 300, Dallas, TX 75201</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">🕐</div>
+          <div>
+            <h4>Hours</h4>
+            <p>Mon – Fri: 7am – 6pm<br>Sat: 8am – 2pm</p>
+          </div>
+        </div>
+      </div>
+      <form>
+        <input type="text" placeholder="Your Name" />
+        <input type="email" placeholder="Email Address" />
+        <input type="tel" placeholder="Phone Number" />
+        <input type="text" placeholder="Project Type (e.g. Kitchen Remodel)" />
+        <textarea placeholder="Tell us about your project..."></textarea>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 <span>Apex Construction</span>. All rights reserved. Licensed &amp; Insured.</p>
+  </footer>
+
+</body>
+</html>
