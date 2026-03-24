@@ -1,36 +1,58 @@
-def generate_estimate(description, materials, hours, rate):                                                           
-    labor_total = hours * rate                                                                                          
-    subtotal = materials + labor_total                                                                                  
-    profit = subtotal * 0.20                                                                                            
-    total = subtotal + profit                                                                                           
-                                                                                                                        
-    print("\n================================================")                                                         
-    print("           CONSTRUCTION JOB ESTIMATE")                                                                       
-    print("================================================")                                                           
-    print(f"Job Description : {description}")                                                                           
-    print("------------------------------------------------")                                                           
-    print(f"Materials Cost  : $ {materials:10,.2f}")                                                                    
-    print(f"Labor Cost      : $ {labor_total:10,.2f}")                                                                  
-    print("                    ------------")                                                                           
-    print(f"Subtotal        : $ {subtotal:10,.2f}")                                                                     
-    print(f"Profit (20%)    : $ {profit:10,.2f}")                                                                       
-    print("                    ------------")                                                                           
-    print(f"TOTAL ESTIMATE  : $ {total:10,.2f}")                                                                        
-    print("================================================\n")                                                         
-                                                                                                                        
-# --- MAIN LOOP ---                                                                                                     
-while True:                                                                                                             
-    user_job = input("Enter the job description: ")                                                                     
-    user_mats = float(input("Enter materials cost: "))                                                                  
-    user_hours = float(input("Enter labor hours: "))                                                                    
-    user_rate = float(input("Enter hourly rate: "))                                                                     
-                                                                                                                        
-    # Run the function                                                                                                  
-    generate_estimate(user_job, user_mats, user_hours, user_rate)                                                       
-                                                                                                                        
-    # Ask the user if they want to continue                                                                             
-    repeat = input("Generate another estimate? (yes/no): ").lower()                                                     
-                                                                                                                        
-    if repeat != "yes":                                                                                                 
-        print("Goodbye!")                                                                                               
-        break                                                                
+from datetime import datetime
+import os
+
+def build_estimate_text(description, materials, hours, rate):
+    labor_total = hours * rate
+    subtotal = materials + labor_total
+    profit = subtotal * 0.20
+    total = subtotal + profit
+
+    lines = [
+        "================================================",
+        "           CONSTRUCTION JOB ESTIMATE",
+        "================================================",
+        f"Date            : {datetime.now().strftime('%B %d, %Y')}",
+        f"Job Description : {description}",
+        "------------------------------------------------",
+        f"Materials Cost  : $ {materials:10,.2f}",
+        f"Labor Cost      : $ {labor_total:10,.2f}",
+        "                    ------------",
+        f"Subtotal        : $ {subtotal:10,.2f}",
+        f"Profit (20%)    : $ {profit:10,.2f}",
+        "                    ------------",
+        f"TOTAL ESTIMATE  : $ {total:10,.2f}",
+        "================================================",
+    ]
+    return "\n".join(lines), total
+
+def save_estimate(description, text):
+    # Build filename: YYYY-MM-DD_job-description.txt
+    date_str = datetime.now().strftime("%Y-%m-%d")
+    safe_name = description.strip().replace(" ", "-").lower()
+    filename = f"{date_str}_{safe_name}.txt"
+
+    with open(filename, "w") as f:
+        f.write(text + "\n")
+
+    return filename
+
+# --- MAIN LOOP ---
+while True:
+    user_job = input("Enter the job description: ")
+    user_mats = float(input("Enter materials cost: $"))
+    user_hours = float(input("Enter labor hours: "))
+    user_rate = float(input("Enter hourly rate: $"))
+
+    estimate_text, total = build_estimate_text(user_job, user_mats, user_hours, user_rate)
+
+    # Print to screen
+    print("\n" + estimate_text + "\n")
+
+    # Save to file
+    saved_file = save_estimate(user_job, estimate_text)
+    print(f"Estimate saved to: {saved_file}")
+
+    repeat = input("\nGenerate another estimate? (yes/no): ").lower()
+    if repeat != "yes":
+        print("Goodbye!")
+        break
