@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JP Automation — Proposal for Jimmy</title>
+  <style>
+    /* ── Variables ── */
+    :root {
+      --navy:      #0a0f1e;
+      --navy-mid:  #0e1628;
+      --navy-card: #111827;
+      --navy-lite: #1a2438;
+      --gold:      #f5a623;
+      --gold-dim:  #c47d0e;
+      --gold-glow: rgba(245,166,35,0.15);
+      --white:     #ffffff;
+      --muted:     #8892a4;
+      --text:      #d0d8e8;
+    }
+
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--navy);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Utilities ── */
+    .gold        { color: var(--gold); }
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 0;
+      opacity: 0.4;
+    }
+    .section     { padding: 80px 6%; max-width: 1100px; margin: 0 auto; }
+    .label {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+    h2 {
+      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 560px;
+      margin-bottom: 3rem;
+    }
+
+    /* ══════════════════════════════════════════
+       HERO
+    ══════════════════════════════════════════ */
+    #hero {
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(245,166,35,0.12) 0%, transparent 70%),
+        linear-gradient(180deg, #0d1425 0%, var(--navy) 100%);
+      padding: 0 6%;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.12) 0%, transparent 100%),
+        radial-gradient(1px 1px at 75% 20%, rgba(255,255,255,0.08) 0%, transparent 100%),
+        radial-gradient(1px 1px at 55% 70%, rgba(255,255,255,0.06) 0%, transparent 100%),
+        radial-gradient(1px 1px at 10% 80%, rgba(255,255,255,0.1) 0%, transparent 100%),
+        radial-gradient(1px 1px at 90% 55%, rgba(255,255,255,0.07) 0%, transparent 100%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 4rem;
+      align-items: center;
+      padding: 120px 0 100px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--gold-glow);
+      border: 1px solid rgba(245,166,35,0.3);
+      color: var(--gold);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding: 0.45rem 1.1rem;
+      border-radius: 100px;
+      margin-bottom: 1.8rem;
+    }
+    .hero-badge::before { content: '●'; font-size: 0.5rem; }
+    .hero-title {
+      font-size: clamp(3rem, 6vw, 5rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.05;
+      letter-spacing: -1px;
+      margin-bottom: 1rem;
+    }
+    .hero-title span {
+      background: linear-gradient(135deg, var(--gold) 0%, #ffd47a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-tagline {
+      font-size: 1.25rem;
+      color: var(--muted);
+      margin-bottom: 3rem;
+      max-width: 480px;
+    }
+    .hero-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .hero-meta-item {
+      display: flex;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+    }
+    .hero-meta-item .key {
+      color: var(--muted);
+      min-width: 120px;
+    }
+    .hero-meta-item .val {
+      color: var(--white);
+      font-weight: 600;
+    }
+    .hero-card {
+      background: var(--navy-card);
+      border: 1px solid rgba(245,166,35,0.2);
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      min-width: 240px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold-dim), var(--gold), var(--gold-dim));
+    }
+    .hero-card-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+    .hero-card-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+    .hero-card-value {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--white);
+    }
+    .hero-card-sub {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 0.25rem;
+    }
+
+    /* ══════════════════════════════════════════
+       INTRO STATEMENT
+    ══════════════════════════════════════════ */
+    #intro {
+      background: var(--navy-mid);
+      padding: 60px 6%;
+    }
+    .intro-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .intro-text h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+    .intro-text p { color: var(--muted); line-height: 1.8; }
+    .intro-text p + p { margin-top: 1rem; }
+    .intro-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+    .stat-box {
+      background: var(--navy-card);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 1.5rem;
+      border-left: 3px solid var(--gold);
+    }
+    .stat-num {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .stat-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 0.3rem;
+    }
+
+    /* ══════════════════════════════════════════
+       SERVICES
+    ══════════════════════════════════════════ */
+    #services { background: var(--navy); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .service-card {
+      background: var(--navy-card);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      padding: 2.25rem 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(245,166,35,0.4);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(245,166,35,0.08);
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+    .service-card:hover::before { opacity: 1; }
+    .service-card.bonus {
+      border-color: rgba(245,166,35,0.25);
+      background: linear-gradient(135deg, var(--navy-card) 0%, rgba(245,166,35,0.04) 100%);
+    }
+    .service-icon { font-size: 2.2rem; margin-bottom: 1.25rem; }
+    .service-name {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 0.25rem;
+    }
+    .service-price {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.5px;
+      margin-bottom: 1.25rem;
+    }
+    .service-price.free {
+      color: #4ade80;
+      background: rgba(74,222,128,0.1);
+      display: inline-block;
+      padding: 0.2rem 0.75rem;
+      border-radius: 100px;
+      font-size: 0.78rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .service-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .service-features li {
+      font-size: 0.9rem;
+      color: var(--muted);
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
+    }
+    .service-features li::before {
+      content: '✦';
+      color: var(--gold);
+      font-size: 0.6rem;
+      margin-top: 0.35rem;
+      flex-shrink: 0;
+    }
+    .bonus-tag {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: linear-gradient(135deg, var(--gold), #ffd47a);
+      color: #000;
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border-radius: 100px;
+    }
+
+    /* ══════════════════════════════════════════
+       BUNDLE
+    ══════════════════════════════════════════ */
+    #bundle { background: var(--navy-mid); }
+    .bundle-box {
+      background: linear-gradient(135deg, rgba(245,166,35,0.1) 0%, rgba(245,166,35,0.04) 100%);
+      border: 1px solid rgba(245,166,35,0.35);
+      border-radius: 20px;
+      padding: 3.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .bundle-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold-dim), var(--gold), var(--gold-dim));
+    }
+    .bundle-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: center;
+      margin-bottom: 2.5rem;
+    }
+    .bundle-title {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.2;
+    }
+    .bundle-title span { color: var(--gold); }
+    .bundle-price-block { text-align: right; }
+    .bundle-price {
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .bundle-price-sub { font-size: 0.9rem; color: var(--muted); }
+    .bundle-savings {
+      display: inline-block;
+      background: rgba(74,222,128,0.15);
+      color: #4ade80;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 0.3rem 1rem;
+      border-radius: 100px;
+      margin-top: 0.5rem;
+    }
+    .bundle-includes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .bundle-item {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+    }
+    .bundle-item-icon { font-size: 1.2rem; flex-shrink: 0; }
+    .bundle-item-text { font-size: 0.88rem; color: var(--text); }
+    .bundle-item-text strong { color: var(--white); display: block; font-size: 0.9rem; }
+
+    /* ══════════════════════════════════════════
+       WHY JP AUTOMATION
+    ══════════════════════════════════════════ */
+    #why { background: var(--navy); }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+    .why-card {
+      background: var(--navy-card);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px;
+      padding: 2rem;
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      transition: border-color 0.2s;
+    }
+    .why-card:hover { border-color: rgba(245,166,35,0.3); }
+    .why-card:first-child {
+      background: linear-gradient(135deg, var(--navy-card) 0%, rgba(245,166,35,0.05) 100%);
+      border-color: rgba(245,166,35,0.2);
+    }
+    .why-icon {
+      font-size: 1.8rem;
+      flex-shrink: 0;
+      width: 52px;
+      height: 52px;
+      background: var(--gold-glow);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .why-body h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+    .why-body p { font-size: 0.9rem; color: var(--muted); line-height: 1.65; }
+
+    /* ══════════════════════════════════════════
+       NEXT STEPS
+    ══════════════════════════════════════════ */
+    #steps { background: var(--navy-mid); }
+    .steps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      max-width: 720px;
+    }
+    .step {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      background: var(--navy-card);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px;
+      padding: 1.75rem 2rem;
+      transition: border-color 0.2s;
+    }
+    .step:hover { border-color: rgba(245,166,35,0.25); }
+    .step-num {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--gold-glow);
+      border: 1.5px solid var(--gold);
+      color: var(--gold);
+      font-size: 0.9rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-body h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.25rem;
+    }
+    .step-body p { font-size: 0.9rem; color: var(--muted); }
+    .step-body p strong { color: var(--gold); }
+
+    /* ══════════════════════════════════════════
+       CONTACT
+    ══════════════════════════════════════════ */
+    #contact { background: var(--navy); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .contact-left h3 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+    .contact-left p { color: var(--muted); line-height: 1.8; }
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .contact-item {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      background: var(--navy-card);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      transition: border-color 0.2s;
+    }
+    .contact-item:hover { border-color: rgba(245,166,35,0.3); }
+    .contact-item-icon { font-size: 1.2rem; }
+    .contact-item-body { }
+    .contact-item-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.1rem;
+    }
+    .contact-item-value {
+      font-size: 0.92rem;
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    /* ══════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════ */
+    footer {
+      background: #060a14;
+      padding: 2.5rem 6%;
+      text-align: center;
+      border-top: 1px solid rgba(245,166,35,0.15);
+    }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-logo {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+    .footer-logo span { color: var(--gold); }
+    .footer-tagline {
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+    .footer-copy { font-size: 0.78rem; color: #3d4a5e; }
+
+    /* ══════════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════════ */
+    @media (max-width: 900px) {
+      .hero-inner        { grid-template-columns: 1fr; }
+      .hero-card         { display: none; }
+      .intro-inner       { grid-template-columns: 1fr; gap: 2.5rem; }
+      .services-grid     { grid-template-columns: 1fr; }
+      .bundle-header     { grid-template-columns: 1fr; }
+      .bundle-price-block{ text-align: left; }
+      .why-grid          { grid-template-columns: 1fr; }
+      .why-card:first-child { grid-column: 1; }
+      .contact-grid      { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ HERO ══ -->
+  <section id="hero">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">Confidential Proposal</div>
+        <h1 class="hero-title">JP<br><span>Automation</span></h1>
+        <p class="hero-tagline">AI-Powered Tools for Modern Businesses</p>
+        <div class="hero-meta">
+          <div class="hero-meta-item">
+            <span class="key">Prepared for</span>
+            <span class="val">Jimmy — Construction Company Owner</span>
+          </div>
+          <div class="hero-meta-item">
+            <span class="key">Date</span>
+            <span class="val">March 29, 2026</span>
+          </div>
+          <div class="hero-meta-item">
+            <span class="key">Prepared by</span>
+            <span class="val">Justin Park, JP Automation</span>
+          </div>
+          <div class="hero-meta-item">
+            <span class="key">Valid for</span>
+            <span class="val">30 days from date above</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-icon">📋</div>
+        <div class="hero-card-label">Proposal Value</div>
+        <div class="hero-card-value">$700 in tools &amp; services</div>
+        <br>
+        <div class="hero-card-label">Delivery</div>
+        <div class="hero-card-value">7 Days</div>
+        <div class="hero-card-sub">guaranteed</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══ INTRO ══ -->
+  <section id="intro">
+    <div class="intro-inner">
+      <div class="intro-text">
+        <h3>Jimmy, here's what we're going to build together.</h3>
+        <p>
+          Your construction business in Los Angeles deserves tools that work as hard as you do.
+          This proposal outlines three custom-built systems — a professional website, an AI-powered
+          review automation system, and a job estimate generator — designed specifically for
+          your business.
+        </p>
+        <p>
+          Everything is built with AI, delivered fast, and priced fairly. No bloated agency fees,
+          no year-long timelines. Just real tools that generate real results — starting in 7 days.
+        </p>
+      </div>
+      <div class="intro-stats">
+        <div class="stat-box">
+          <div class="stat-num">3×</div>
+          <div class="stat-desc">More Google reviews within 60 days</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">7</div>
+          <div class="stat-desc">Days from deposit to live and running</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">100%</div>
+          <div class="stat-desc">Custom built for your brand</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">$0</div>
+          <div class="stat-desc">Hosting cost — included free</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══ SERVICES ══ -->
+  <section id="services">
+    <div class="section">
+      <div class="label">What's Included</div>
+      <h2>Three Tools, One Complete System</h2>
+      <p class="section-sub">Each tool is custom built for your business and ready to generate results from day one.</p>
+      <div class="services-grid">
+
+        <!-- Card 1 -->
+        <div class="service-card">
+          <div class="service-icon">🌐</div>
+          <div class="service-name">Professional Website</div>
+          <div class="service-price">$400 — One-Time</div>
+          <ul class="service-features">
+            <li>Custom designed for your brand and services</li>
+            <li>Mobile responsive on every device</li>
+            <li>Services, about, and contact form included</li>
+            <li>Hosted for free — live within 7 days</li>
+            <li>SEO optimized to appear on Google searches</li>
+          </ul>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="service-card">
+          <div class="service-icon">🤖</div>
+          <div class="service-name">AI Review Automation</div>
+          <div class="service-price">$200 Setup + $200/month</div>
+          <ul class="service-features">
+            <li>Sends personalized review requests after every job</li>
+            <li>3 unique message variations to avoid spam filters</li>
+            <li>Full message log and weekly performance report</li>
+            <li>Designed to increase Google reviews within 60 days</li>
+            <li>Runs completely on autopilot</li>
+            <li>Covers system maintenance, message updates, and performance monitoring</li>
+          </ul>
+        </div>
+
+        <!-- Card 3 — Bonus -->
+        <div class="service-card bonus">
+          <div class="bonus-tag">Free Bonus</div>
+          <div class="service-icon">📊</div>
+          <div class="service-name">Job Estimate Generator</div>
+          <div class="service-price free">Complimentary</div>
+          <ul class="service-features">
+            <li>Calculates labor, materials, and profit margin instantly</li>
+            <li>Saves every estimate as a dated file automatically</li>
+            <li>Never lose a quote record again</li>
+            <li>Custom profit margin settings per job</li>
+            <li>Included free — a thank you for being our first client</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══ BUNDLE ══ -->
+  <section id="bundle">
+    <div class="section">
+      <div class="label">Best Value</div>
+      <h2>The Complete Package</h2>
+      <p class="section-sub">Everything together, at a price that makes sense for a growing business.</p>
+      <div class="bundle-box">
+        <div class="bundle-header">
+          <div>
+            <div class="bundle-title">Complete Package Deal<br><span>All three tools. One low price.</span></div>
+          </div>
+          <div class="bundle-price-block">
+            <div class="bundle-price">$500</div>
+            <div class="bundle-price-sub">upfront + $200/month</div>
+            <div class="bundle-savings">Save $100 vs. individual pricing</div>
+            <div style="font-size:0.78rem;color:var(--muted);margin-top:0.6rem;">🔒 This pricing is locked for 30 days from the proposal date</div>
+          </div>
+        </div>
+        <div class="bundle-includes">
+          <div class="bundle-item">
+            <div class="bundle-item-icon">🌐</div>
+            <div class="bundle-item-text">
+              <strong>Professional Website</strong>
+              Custom designed, mobile responsive, SEO ready
+            </div>
+          </div>
+          <div class="bundle-item">
+            <div class="bundle-item-icon">🤖</div>
+            <div class="bundle-item-text">
+              <strong>AI Review Automation</strong>
+              Setup + first month of service included
+            </div>
+          </div>
+          <div class="bundle-item">
+            <div class="bundle-item-icon">📊</div>
+            <div class="bundle-item-text">
+              <strong>Job Estimate Generator</strong>
+              Yours to keep forever, no monthly fee
+            </div>
+          </div>
+          <div class="bundle-item">
+            <div class="bundle-item-icon">🛠️</div>
+            <div class="bundle-item-text">
+              <strong>Ongoing Support</strong>
+              Updates, changes, and questions — always answered
+            </div>
+          </div>
+          <div class="bundle-item">
+            <div class="bundle-item-icon">🚀</div>
+            <div class="bundle-item-text">
+              <strong>7-Day Delivery</strong>
+              Everything live and running in one week, guaranteed
+            </div>
+          </div>
+          <div class="bundle-item">
+            <div class="bundle-item-icon">📍</div>
+            <div class="bundle-item-text">
+              <strong>Local LA Business</strong>
+              Same timezone, always reachable, no outsourcing
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══ WHY ══ -->
+  <section id="why">
+    <div class="section">
+      <div class="label">Why JP Automation</div>
+      <h2>Built Different</h2>
+      <p class="section-sub">You could hire a big agency. Here's why you shouldn't.</p>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon">⚡</div>
+          <div class="why-body">
+            <h4>Cutting-Edge AI Technology, Applied Practically</h4>
+            <p>Every tool in this package is powered by the same AI technology used by Fortune 500 companies — but built specifically for a local construction business. You get enterprise-grade results without the enterprise price tag.</p>
+          </div>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">📅</div>
+          <div class="why-body">
+            <h4>7-Day Delivery, Guaranteed</h4>
+            <p>Most agencies take 6–12 weeks to launch a website. We take 7 days. Everything in this proposal will be live and working within one week of your deposit — we don't stop until it's live.</p>
+          </div>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">🤝</div>
+          <div class="why-body">
+            <h4>Ongoing Support With Every Plan</h4>
+            <p>Your monthly retainer includes unlimited questions, updates, and tweaks. Need to add a new service to your site? Done. Want a different message tone in the review system? No problem. We're partners, not vendors.</p>
+          </div>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">📍</div>
+          <div class="why-body">
+            <h4>Based in Cerritos — Serving the Greater LA Area</h4>
+            <p>No offshore teams, no 12-hour time differences, no disappearing after the check clears. We're local, in your backyard, and you'll have a direct line to reach us anytime.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══ NEXT STEPS ══ -->
+  <section id="steps">
+    <div class="section">
+      <div class="label">How We Start</div>
+      <h2>Next Steps</h2>
+      <p class="section-sub">From handshake to live system in four simple steps.</p>
+      <div class="steps-list">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4>Review This Proposal</h4>
+            <p>Look over everything included. Ask any questions — no pressure, no hard sell.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4>50% Deposit to Begin</h4>
+            <p><strong>$250 upfront</strong> locks in your spot and starts the build immediately. Remaining balance due on delivery.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4>Provide Your Business Details</h4>
+            <p>Send over your company name, services offered, photos, contact info, and any branding preferences. A simple form will be provided.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h4>Live and Running Within 7 Days</h4>
+            <p>Your website goes live, your review automation is active, and your estimate generator is ready to use — all within one week.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══ CONTACT ══ -->
+  <section id="contact">
+    <div class="section">
+      <div class="contact-grid">
+        <div class="contact-left">
+          <div class="label">Get In Touch</div>
+          <h3>Ready to move forward?<br>Let's talk.</h3>
+          <p>
+            Questions, changes, or ready to sign — reach out directly.
+            There's no automated inbox here. You'll hear back from Justin personally.
+          </p>
+        </div>
+        <div class="contact-details">
+          <div class="contact-item">
+            <div class="contact-item-icon">👤</div>
+            <div class="contact-item-body">
+              <div class="contact-item-label">Name</div>
+              <div class="contact-item-value">Justin Park</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">🏢</div>
+            <div class="contact-item-body">
+              <div class="contact-item-label">Business</div>
+              <div class="contact-item-value">JP Automation</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">✉️</div>
+            <div class="contact-item-body">
+              <div class="contact-item-label">Email</div>
+              <div class="contact-item-value">pigmajustin@gmail.com</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📱</div>
+            <div class="contact-item-body">
+              <div class="contact-item-label">Phone</div>
+              <div class="contact-item-value">562-526-4005</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══ FOOTER ══ -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">JP <span>Automation</span></div>
+      <div class="footer-tagline">"Built with AI. Delivered with integrity."</div>
+      <div class="footer-copy">&copy; 2026 JP Automation. All rights reserved. Confidential proposal prepared for Jimmy.</div>
+    </div>
+  </footer>
+
+</body>
+</html>
