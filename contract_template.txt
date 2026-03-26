@@ -1,0 +1,128 @@
+================================================================================
+                        CLIENT SERVICES AGREEMENT
+                    AURVEX — AI Automation Agency
+                  Cerritos, California | aurvex.com
+================================================================================
+
+This agreement is entered into between Aurvex ("Agency") and the client named
+below ("Client"). By signing, both parties agree to the terms outlined here.
+
+────────────────────────────────────────────────────────────────────────────────
+1. PARTIES & PROJECT SCOPE
+────────────────────────────────────────────────────────────────────────────────
+
+Client Name        : ___________________________________________________
+Business Name      : ___________________________________________________
+Service Description: ___________________________________________________
+                     ___________________________________________________
+
+Deliverables       : ___________________________________________________
+                     ___________________________________________________
+
+Project Timeline   : Work begins upon receipt of deposit. Estimated
+                     completion: ______ days from project start date.
+
+────────────────────────────────────────────────────────────────────────────────
+2. INVESTMENT & PAYMENT TERMS
+────────────────────────────────────────────────────────────────────────────────
+
+Project Total      : $_______________
+Monthly Retainer   : $_______________  (if applicable)
+
+  • A 50% deposit is required before any work begins. No exceptions.
+  • The remaining 50% is due upon project delivery and final approval.
+  • Monthly retainer fees are auto-billed on the 1st of each month.
+  • Invoices unpaid after 7 days incur a 10% late fee on the balance owed.
+  • All payments are non-refundable once work has commenced.
+
+────────────────────────────────────────────────────────────────────────────────
+3. REVISION POLICY
+────────────────────────────────────────────────────────────────────────────────
+
+  • Revisions are defined as change requests made during the active build
+    phase, before final delivery. They do not apply to post-delivery work.
+  • Two (2) rounds of revisions are included in every project.
+  • A revision round is defined as one consolidated set of feedback.
+  • Additional revision rounds beyond the two included are billed at
+    $25 per round, invoiced and due before work resumes.
+  • Revisions do not include new features or changes to original scope.
+    Those are treated as a new project and quoted separately.
+  • Post-delivery support, bug fixes, content updates, and maintenance
+    are not revisions — they are covered under the monthly retainer
+    (see Section 2). Clients on the $200/month retainer receive unlimited
+    ongoing maintenance, bug fixes, content updates, and technical support
+    with no additional charge after delivery.
+
+────────────────────────────────────────────────────────────────────────────────
+4. INTELLECTUAL PROPERTY
+────────────────────────────────────────────────────────────────────────────────
+
+  • Client owns all final deliverables once payment is paid in full.
+  • Until final payment is received, all work product remains the sole
+    property of Aurvex and may not be used, deployed, or distributed.
+  • Aurvex retains the right to display completed work in its portfolio,
+    case studies, and marketing materials unless Client requests otherwise
+    in writing prior to signing this agreement.
+
+────────────────────────────────────────────────────────────────────────────────
+5. TERMINATION
+────────────────────────────────────────────────────────────────────────────────
+
+  • Either party may terminate this agreement with 14 days written notice
+    sent via email to the other party's address on record.
+  • Upon termination, all work completed up to that date must be paid
+    in full before any deliverables are transferred to the Client.
+  • Monthly retainer agreements cancelled mid-cycle are still billed for
+    the full current month. No partial refunds are issued.
+
+────────────────────────────────────────────────────────────────────────────────
+6. NON-PAYMENT CONSEQUENCES
+────────────────────────────────────────────────────────────────────────────────
+
+  • If a payment is missed, all active work pauses immediately.
+  • No deliverables, files, credentials, or assets will be transferred
+    until the outstanding balance — including any late fees — is paid.
+  • For unpaid balances exceeding $500, Aurvex reserves the right to
+    pursue legal action and recover all associated collection costs,
+    attorney fees, and court costs from the Client.
+
+────────────────────────────────────────────────────────────────────────────────
+7. LIMITATION OF LIABILITY
+────────────────────────────────────────────────────────────────────────────────
+
+  • Aurvex is not responsible for changes, outages, or policy updates
+    made by third-party platforms (Google, Meta, hosting providers, etc.)
+    that affect deliverables after project completion.
+  • Business results — including but not limited to revenue, leads,
+    reviews, or rankings — are not guaranteed. Aurvex provides tools
+    and systems; results depend on factors outside our control.
+  • Aurvex's total liability under this agreement shall not exceed the
+    total amount paid by Client in the most recent 30-day period.
+
+────────────────────────────────────────────────────────────────────────────────
+8. AGREEMENT & DIGITAL SIGNATURE
+────────────────────────────────────────────────────────────────────────────────
+
+By signing below, Client confirms they have read, understood, and agreed
+to all terms in this contract. This agreement is legally binding upon
+signature and constitutes the entire agreement between both parties.
+
+By signing, Client also confirms their legal full name, business name,
+and email address on file. This document is executed via HelloSign, which
+records the signer's verified email address, IP address, timestamp, and
+device information as legal proof of agreement.
+
+Client Name (Print) : ___________________________________________________
+
+Client Signature    : ___________________________________________________
+
+Date                : ___________________________________________________
+
+Business Name       : ___________________________________________________
+
+────────────────────────────────────────────────────────────────────────────────
+
+                    Prepared by Aurvex | Cerritos, California
+           Questions? Contact us before signing — not after.
+
+================================================================================
