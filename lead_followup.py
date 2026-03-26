@@ -157,7 +157,10 @@ def generate_messages(name: str, service: str, business_name: str, source: str) 
     Returns list of dicts with 'text' and 'char_count'.
     Falls back to templates automatically on any API failure.
     """
-    client     = anthropic.Anthropic()
+    api_key = os.environ.get("ANTHROPIC_API_KEY")
+    if not api_key:
+        raise anthropic.AuthenticationError("ANTHROPIC_API_KEY environment variable is not set.")
+    client     = anthropic.Anthropic(api_key=api_key)
     first_name = name.split()[0]
 
     prompt = f"""Generate exactly 3 different follow-up SMS messages for a business lead.
