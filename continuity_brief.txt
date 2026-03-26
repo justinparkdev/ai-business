@@ -1,0 +1,240 @@
+JUSTIN PARK — FULL CONTINUITY BRIEF — March 25 2026
+WHO I AM
+Name: Justin Park, 16, Cerritos CA. High school until May 31 2028. Business partner: Ved (same age) — he is the Closer, I am the Builder. Goal: $10k+/month by May 2028, skip college. Mentor style: strict, harsh when needed, never sugarcoat, always push forward, never just agree, correct me when I'm wrong, never let me get sidetracked. Never forget anything I say unless I tell you to forget it.
+DAILY ROUTINE
+
+Every morning: run python3 ~/Desktop/ai-business/briefing.py and paste output at start of every chat
+Sleep by 11pm on school nights
+Push to GitHub after every single build session
+Type /clear in Claude Code when it warns about auto-compact
+
+COMPANY
+Name: Aurvex. Email: justin.jpautomation@gmail.com. GitHub: github.com/justinparkdev/ai-business. Domain: aurvex.net available on Namecheap at $12.98/year — buy AFTER first client pays.
+BUSINESS MODEL
+AI Automation Agency — retainer clients. Core services: websites, review automation, lead follow-up systems for local service businesses in Cerritos and surrounding LA area (Norwalk, Lakewood, Downey, Bellflower, Long Beach, Torrance, Carson).
+TECH STACK
+
+Claude Code terminal: primary build tool
+Python: backend language
+Anthropic API: AI brain (pending debit card)
+Twilio: SMS sending (pending debit card)
+GitHub Pages: free website hosting
+Stripe: payment processing (account exists)
+Namecheap: domain registration
+HelloSign: digital contracts (setting up Monday after Sunday)
+Make.com: automation workflows (Phase 2)
+
+PRICING
+
+Website: $400-500 one time
+Review Automation: $200 setup + $200/month
+Lead Follow-Up System: $150-200/month add-on
+Bundle for Jimmy: $500 upfront + $200/month
+50% deposit always before starting work
+Never say cost — say investment
+Never say basic — say essential
+Never say standard — say customized
+Never say few — say limited
+Never say buy — use scarcity language
+Never say $1,000 — say $999
+Never discount before client objects
+Custom features: never quote on the spot, always say "I'll get you exact numbers within 24 hours"
+
+CUSTOM PRICING ADD-ONS
+
+Photo gallery: +$50
+Google reviews section: +$50
+Booking form: +$100
+Extra pages: +$50 each
+Logo design: +$100
+Animations: +$150
+SMS + Email automation: +$100 to setup fee
+Upgrade estimate tool to web form: +$200 one time
+Upgrade to WhatsApp/text integration: +$150 one time
+
+SALES PSYCHOLOGY — EXACT LANGUAGE RULES
+
+Never say cost — say investment
+Never say basic — say essential
+Never say standard — say customized
+Never say few — say limited
+Never say buy now — say "3 spots left" or similar scarcity
+Never say $1,000 — say $999
+Never say "we just started" — say "you're our only focus right now"
+Custom features: never quote on the spot, always say "I'll get you exact numbers within 24 hours"
+
+FIRST CLIENT — JIMMY
+Runs a construction company. Met through church. Meeting: Sunday March 29 2026. Phone: 5627149407. CRM ID: d7a358c0. Dad knows Jimmy and said Jimmy has low chance of buying — ignore this, let Jimmy decide himself. Never let dad's doubt become Justin's doubt. Bundle pitch: $500 upfront + $200/month.
+NEGOTIATION LADDER IF JIMMY OBJECTS
+
+Ask "what were you thinking investment-wise?" first — shut up and let him talk
+Step 1: $500 website only, no monthly
+Step 2: $300 upfront + $150/month
+Step 3 (last resort only): $200 upfront + $100/month, first client discount, ask for testimonial and referral in return
+Never go free. Ever.
+Never say "we just started" — flip it: "we're hungry, we answer texts at 10pm, you're our only focus"
+
+SUNDAY MEETING ORDER
+
+Open proposal.html first
+Show index.html website demo
+Run estimate.py live with his job details
+Run review_automation.py live
+Pitch bundle: $500 upfront + $200/month
+Collect $250 deposit via Stripe same day
+Ask 6 questions: company name, services, photos, reviews/testimonials, phone/email/address, domain name
+
+DELIVERY TIMELINE AFTER SUNDAY
+
+Sunday: Meeting, collect $250
+Monday: Get details, set up HelloSign, send contract
+Tuesday: Build customized website
+Wednesday: Set up Twilio, connect review automation
+Thursday: Test everything, send preview
+Friday: Approval, collect remaining $250
+Saturday: Everything goes live
+
+TOOLS BUILT (all in ~/Desktop/ai-business/)
+
+briefing.py — daily status briefing, run every morning
+estimate.py — construction job estimate generator, saves dated .txt file
+index.html — construction company website demo, dark theme gold accents
+review_automation.py — AI review request SMS generator, 3 variations, fallback templates working
+proposal.html — client proposal dark navy/gold theme, all 7 issues fixed
+summarize.py — text file analyzer
+crm.py — full business CRM, Jimmy added as first client ID d7a358c0
+lead_followup.py — lead follow-up system, urgency scoring, revenue estimates, fallback templates working, API key fix applied, no delete function yet (add after Sunday), 2 fake test leads in system to ignore
+contract_template.txt — 8 section client contract complete and pushed to GitHub
+contract_template.pdf — PDF version ready to email to Jimmy on Sunday if he agrees
+continuity_brief.txt — this file, saved at ~/Desktop/ai-business/continuity_brief.txt, pushed to GitHub
+
+CONTRACT DETAILS
+
+HelloSign for digital signatures — set up Monday after Sunday meeting
+$25 per additional revision after 2 included rounds
+Revisions = changes during active build phase before delivery
+Maintenance = post-delivery support, unlimited, included in $200/month retainer
+50% deposit before work, 50% on delivery
+Late payments incur 10% fee after 7 days
+Non-payment = work stops immediately, files withheld until paid
+Legal action for amounts over $500
+HelloSign records email, IP address, timestamp, device as legal proof of identity
+
+GITHUB STATUS
+
+Repo: github.com/justinparkdev/ai-business
+10+ commits, all tools pushed and live
+message_log.csv removed from tracking via .gitignore
+Never push API keys to GitHub ever
+
+SECURITY RULES
+
+API key stored in ~/.zshrc only
+Never hardcode API key in any Python file
+Run grep -r "sk-ant" . periodically to check for accidental exposure
+If key ever exposed — rotate immediately at console.anthropic.com
+
+API KEY STATUS
+Stored correctly in ~/.zshrc as ANTHROPIC_API_KEY. No debit card yet so no API credits. Fallback templates working fine for Sunday. When debit card arrives, add credits at console.anthropic.com and API will work automatically.
+VED'S STATUS
+Found 20 businesses. Has not sent outreach yet. Needs verified list of 10 with working phone numbers and active Google Business profiles. Starts outreach Wednesday. 20 contacts per day. Justin must review ALL scripts before Ved sends anything. Best outreach method: cold calling first, Instagram/Facebook DM second, email last.
+VED'S TARGET BUSINESS CHECKLIST
+Skip if: less than 10 Google reviews, no website at all, already has modern professional website
+Prioritize if: bad or outdated website, 15-40 Google reviews, not responding to reviews, service business, open 2+ years, active social media but weak website presence
+VED'S ROLE
+Ved is the Closer only. Does NOT build anything. Does NOT need GitHub. Justin reviews all outreach before it goes out. Ved practices every script 10 times before calling.
+MONTHLY COSTS
+
+Claude Pro: $20/month
+Anthropic API: $10-20/month (pending debit card)
+Twilio: $15/month (add after first client pays)
+Make.com: $9/month (add when needed)
+Google Workspace: $6/month (add after first client pays)
+Total now: ~$20/month
+Total at 5 clients: ~$60-70/month
+
+ROADMAP
+
+Phase 1 (Now-May 2026): Build skills and tools ← YOU ARE HERE
+Phase 2 (June-Aug 2026): First 3 clients, $600 MRR
+Phase 3 (Sept 2026-Mar 2027): Scale to $3,000 MRR
+Phase 4 (Apr-Aug 2027): Website upsells, $6,000-8,000 MRR
+Phase 5 (Sept 2027-May 2028): $10,000+ MRR, 25+ clients
+
+JUSTIN'S PERSONALITY AND PATTERNS TO WATCH
+
+Tends to get distracted by shiny future ideas when nervous or stuck
+Asks about scaling, agents, SaaS, multi-device setups when he should be focused on current task
+Needs to be pulled back to current task firmly every time
+Has a habit of building a case in his head for why things won't work before trying
+Dad's doubt has almost talked him out of things twice — never let outside doubt become Justin's doubt
+Strong builder, gets things done when focused
+Needs harsh correction not gentle agreement
+Does good work late at night — watch the clock on school nights
+
+FUTURE VISIONS — ALL LOCKED IN, BUILT AT THE RIGHT PHASE
+
+CLAUDE.md setup and Claude skills so sites stop looking AI — after Sunday
+Website design system with real reference sites and style constraints — after Sunday
+Multi-agent Claude Code setups running simultaneously — Phase 3
+Automated agents for research, video creation, email outreach, contract negotiation — Phase 3
+SaaS product build — Phase 4 minimum
+OpenClaw integration (250k GitHub stars, powerful open source AI agent platform) — Phase 3
+Make.com automation workflows — Phase 2
+Computer Use / phone automation — Phase 3
+Anthropic free training courses — after first client
+HelloSign full setup — Monday after Sunday
+aurvex.net domain purchase — after first client pays
+Delete function in lead_followup.py — after Sunday
+Client-facing version of lead follow-up tool — Phase 2
+Social media presence and full online presence for Aurvex — after first client
+Stripe full payment infrastructure — after first client
+Multi-device setup — Phase 3
+How to transfer tools to clients — Phase 2
+
+WHEN BRIEF GETS TOO LONG
+Split into 4 separate files in ~/Desktop/ai-business/ at $3k/month:
+
+continuity_brief.txt — core identity, rules, personality, never changes
+business_status.txt — current clients, revenue, active tasks
+tools_built.txt — every tool, what it does, current status
+future_visions.txt — everything locked for later phases
+Paste only relevant files at start of each chat.
+
+CURRENT STATUS
+
+Day 4 of business
+$0 revenue, 0 clients
+First meeting Sunday March 29 with Jimmy
+Ved found 20 businesses but none verified yet
+Ved has not done any outreach yet
+Justin practiced pitch but needs more reps
+All 9 tools built and pushed to GitHub
+
+NEXT TASKS IN ORDER
+
+Ved sends verified business list → review and build individual cold call and DM scripts for each business type
+Sunday March 29 — close Jimmy, collect $250 deposit
+Monday — HelloSign setup, send Jimmy contract, get his business details
+Tuesday — build Jimmy's custom website in Claude Code
+After Sunday — build CLAUDE.md and website design system
+
+MENTOR RULES — NEVER BREAK
+
+Run briefing.py every morning, paste output at start of every chat
+One service until $3k/month, no pivoting
+Ved does outreach every single day, no excuses
+Never discount before client objects
+Collect payment before building, always
+Every client gets a contract
+Never build without understanding the code
+Push to GitHub after every build session
+Sleep by 11pm on school nights
+No gambling or betting tools ever
+Close extra browser tabs, no distractions
+Always put heart and soul into every Claude Code prompt — detailed, professional, specific, never generic
+Warn Justin when it's time to switch chats to save credits
+Never let Justin get sidetracked
+Be harsh when Justin has bad ideas or bad habits
+Never just agree — always push to improve
+Never forget anything Justin has said unless he tells you to forget it
