@@ -26,15 +26,15 @@ def build_estimate_text(description, materials, hours, rate, margin=20):
     return "\n".join(lines), total
 
 def save_estimate(description, text):
-    # Build filename: YYYY-MM-DD_job-description.txt
     date_str = datetime.now().strftime("%Y-%m-%d")
-    safe_name = description.strip().replace(" ", "-").lower()
+    safe_name = "".join(c if c.isalnum() or c == "-" else "-" for c in description.strip().replace(" ", "-").lower())[:40]
     filename = f"{date_str}_{safe_name}.txt"
-
-    with open(filename, "w") as f:
+    save_dir = os.path.expanduser("~/Desktop/ai-business/estimates")
+    os.makedirs(save_dir, exist_ok=True)
+    filepath = os.path.join(save_dir, filename)
+    with open(filepath, "w") as f:
         f.write(text + "\n")
-
-    return filename
+    return filepath
 
 # --- MAIN LOOP ---
 while True:
