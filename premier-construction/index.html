@@ -15,7 +15,7 @@
     :root {
       --bg:        #FFFFFF;
       --bg-card:   #F9FAFB;
-      --bg-deep:   #111827;
+      --bg-deep:   #F3F4F6;
       --text:      #111827;
       --muted:     #6B7280;
       --dim:       #9CA3AF;
@@ -23,7 +23,7 @@
       --accent-lt: #3B82F6;
       --border:    rgba(37,99,235,0.15);
       --border-lt: rgba(17,24,39,0.08);
-      --cream:     #111827;
+      --cream:     #F9FAFB;
       --font-h:    'Sora', sans-serif;
       --font-b:    'Inter', sans-serif;
     }
@@ -68,16 +68,16 @@
     .btn-ghost {
       background: transparent;
       color: var(--text);
-      border: 1.5px solid rgba(255,255,255,0.25);
+      border: 1.5px solid rgba(17,24,39,0.2);
     }
-    .btn-ghost:hover { border-color: var(--accent); color: var(--accent-lt); }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
 
     .btn-dark {
-      background: var(--bg-deep);
+      background: #111827;
       color: #F9FAFB;
-      border: 1.5px solid rgba(255,255,255,0.1);
+      border: 1.5px solid #111827;
     }
-    .btn-dark:hover { border-color: var(--accent-lt); }
+    .btn-dark:hover { background: #1F2937; border-color: #1F2937; }
 
     /* ── MICRO LABEL ─────────────────────────────────────── */
     .eyebrow {
@@ -182,8 +182,8 @@
       background-image:
         repeating-linear-gradient(
           -52deg,
-          rgba(37,99,235,0.04) 0px,
-          rgba(37,99,235,0.04) 1px,
+          rgba(37,99,235,0.06) 0px,
+          rgba(37,99,235,0.06) 1px,
           transparent 1px,
           transparent 48px
         );
@@ -200,8 +200,8 @@
       font-size: clamp(140px, 18vw, 240px);
       line-height: 1;
       color: transparent;
-      -webkit-text-stroke: 1px rgba(37,99,235,0.08);
-      text-stroke: 1px rgba(37,99,235,0.08);
+      -webkit-text-stroke: 1px rgba(37,99,235,0.06);
+      text-stroke: 1px rgba(37,99,235,0.06);
       letter-spacing: -0.04em;
       user-select: none;
       pointer-events: none;
@@ -328,8 +328,8 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      background: rgba(255,255,255,0.04);
-      border-left: 1px solid rgba(255,255,255,0.1);
+      background: #FFFFFF;
+      border-left: 1px solid #E5E7EB;
       padding: 80px 36px;
       gap: 0;
     }
@@ -338,7 +338,7 @@
     .hero-year-block {
       margin-bottom: 40px;
       padding-bottom: 40px;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid #E5E7EB;
     }
     .hero-year-num {
       font-family: var(--font-h);
@@ -373,7 +373,7 @@
       font-size: 36px;
       line-height: 1;
       letter-spacing: -0.03em;
-      color: var(--text);
+      color: var(--accent);
     }
     .hero-stat-desc {
       font-size: 12px;
@@ -386,7 +386,7 @@
     .hero-license {
       margin-top: 40px;
       padding-top: 28px;
-      border-top: 1px solid var(--border);
+      border-top: 1px solid #E5E7EB;
     }
     .hero-license-badge {
       display: inline-flex;
@@ -427,7 +427,8 @@
         flex-wrap: wrap;
         gap: 24px;
         padding: 32px 20px;
-        background: rgba(255,255,255,0.05);
+        background: #FFFFFF;
+        border-top: 1px solid #E5E7EB;
       }
       .hero-year-block { display: none; }
       .hero-stat-list { flex-direction: row; flex-wrap: wrap; gap: 20px; }
@@ -592,7 +593,7 @@
     ══════════════════════════════════════════════════════ */
     #why-us {
       background: var(--cream);
-      color: var(--bg);
+      color: var(--text);
       padding: 0;
       position: relative;
     }
@@ -645,24 +646,24 @@
       font-size: clamp(32px, 4vw, 52px);
       line-height: 1.05;
       letter-spacing: -0.03em;
-      color: var(--bg);
+      color: var(--text);
       margin-bottom: 24px;
     }
     .why-headline span {
-      color: var(--accent-lt);
+      color: var(--accent);
     }
     .why-lead {
       font-size: 17px;
-      color: #9CA3AF;
+      color: var(--muted);
       line-height: 1.75;
       margin-bottom: 36px;
     }
     .why-left-cta {
-      background: #FFFFFF;
-      color: #111827;
+      background: var(--accent);
+      color: #FFFFFF;
       border: none;
     }
-    .why-left-cta:hover { background: #F3F4F6; transform: translateY(-1px); }
+    .why-left-cta:hover { background: var(--accent-lt); transform: translateY(-1px); }
 
     /* right: 3 differentiators as horizontal bars */
     .why-facts {
@@ -672,7 +673,7 @@
     }
     .why-fact {
       padding: 32px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid #E5E7EB;
       display: grid;
       grid-template-columns: 100px 1fr;
       gap: 24px;
@@ -696,13 +697,13 @@
       font-family: var(--font-h);
       font-weight: 700;
       font-size: 17px;
-      color: var(--bg);
+      color: var(--text);
       margin-bottom: 6px;
       letter-spacing: -0.01em;
     }
     .why-fact-body {
       font-size: 14px;
-      color: #9CA3AF;
+      color: var(--muted);
       line-height: 1.65;
     }
 
@@ -736,8 +737,8 @@
       font-size: 32vw;
       line-height: 1;
       color: transparent;
-      -webkit-text-stroke: 1px rgba(37,99,235,0.06);
-      text-stroke: 1px rgba(37,99,235,0.06);
+      -webkit-text-stroke: 1px rgba(37,99,235,0.04);
+      text-stroke: 1px rgba(37,99,235,0.04);
       user-select: none;
       pointer-events: none;
     }
@@ -780,7 +781,7 @@
       padding: 48px 40px;
       transition: background 0.2s;
     }
-    .t-card:hover { background: #1F2937; }
+    .t-card:hover { background: #EFF6FF; }
 
     /* featured card spans both rows on left */
     .t-card-featured {
@@ -1005,7 +1006,7 @@
     ══════════════════════════════════════════════════════ */
     #footer {
       background: var(--bg-deep);
-      border-top: 1px solid var(--border);
+      border-top: 1px solid #E5E7EB;
     }
 
     .footer-upper {
@@ -1050,7 +1051,7 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 16px 28px;
-      border-top: 1px solid var(--border-lt);
+      border-top: 1px solid #E5E7EB;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -1293,7 +1294,7 @@
     <div class="why-content">
 
       <div class="why-left r">
-        <span class="eyebrow" style="color:#60A5FA;">What sets us apart</span>
+        <span class="eyebrow">What sets us apart</span>
         <h2 class="why-headline">
           Other contractors<br />
           talk. We <span>deliver.</span>
