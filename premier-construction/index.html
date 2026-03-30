@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Premier Construction Co — Cerritos, CA</title>
+  <meta name="description" content="Premier Construction Co serves Cerritos, Norwalk, Lakewood, Downey and surrounding LA cities. Roofing, remodeling, new construction, and commercial builds. 200+ projects completed. Licensed & Insured. Call (562) 555-0100." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #FFFFFF;
+      --bg-card:   #F9FAFB;
+      --bg-deep:   #111827;
+      --text:      #111827;
+      --muted:     #6B7280;
+      --dim:       #9CA3AF;
+      --accent:    #2563EB;
+      --accent-lt: #3B82F6;
+      --border:    rgba(37,99,235,0.15);
+      --border-lt: rgba(17,24,39,0.08);
+      --cream:     #111827;
+      --font-h:    'Sora', sans-serif;
+      --font-b:    'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-b);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ── BUTTONS ─────────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-b);
+      font-weight: 600;
+      font-size: 15px;
+      padding: 13px 28px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+      letter-spacing: 0.01em;
+    }
+    .btn-amber {
+      background: var(--accent);
+      color: #fff;
+    }
+    .btn-amber:hover { background: var(--accent-lt); transform: translateY(-1px); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1.5px solid rgba(255,255,255,0.25);
+    }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent-lt); }
+
+    .btn-dark {
+      background: var(--bg-deep);
+      color: #F9FAFB;
+      border: 1.5px solid rgba(255,255,255,0.1);
+    }
+    .btn-dark:hover { border-color: var(--accent-lt); }
+
+    /* ── MICRO LABEL ─────────────────────────────────────── */
+    .eyebrow {
+      font-family: var(--font-b);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    /* ══════════════════════════════════════════════════════
+       NAV
+    ══════════════════════════════════════════════════════ */
+    #nav {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(17,24,39,0.1);
+      box-shadow: 0 1px 3px rgba(17,24,39,0.06);
+    }
+    /* thin amber top stripe — designer signature detail */
+    #nav::before {
+      content: '';
+      display: block;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent) 0%, var(--accent-lt) 60%, transparent 100%);
+    }
+
+    .nav-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 66px;
+    }
+
+    .nav-logo {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+    .nav-logo-name {
+      font-family: var(--font-h);
+      font-weight: 800;
+      font-size: 17px;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+    .nav-logo-tag {
+      font-size: 10.5px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--dim);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .nav-phone {
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--muted);
+      transition: color 0.2s;
+      letter-spacing: 0.01em;
+    }
+    .nav-phone:hover { color: var(--accent-lt); }
+    .nav-cta { padding: 9px 20px; font-size: 13.5px; border-radius: 3px; }
+
+    @media (max-width: 440px) {
+      .nav-phone-text { display: none; }
+      .nav-phone-icon { display: inline-flex; align-items: center; }
+    }
+    .nav-phone-icon { display: none; }
+
+    /* ══════════════════════════════════════════════════════
+       HERO — ASYMMETRIC SPLIT
+    ══════════════════════════════════════════════════════ */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      /* intentionally uneven — not 50/50 */
+      grid-template-columns: 1fr 320px;
+      background: var(--bg-deep);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* faint diagonal hatching — construction drawing feel */
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(
+          -52deg,
+          rgba(37,99,235,0.04) 0px,
+          rgba(37,99,235,0.04) 1px,
+          transparent 1px,
+          transparent 48px
+        );
+      pointer-events: none;
+    }
+
+    /* large watermark text behind content */
+    .hero-watermark {
+      position: absolute;
+      bottom: -0.05em;
+      left: -0.02em;
+      font-family: var(--font-h);
+      font-weight: 800;
+      font-size: clamp(140px, 18vw, 240px);
+      line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(37,99,235,0.08);
+      text-stroke: 1px rgba(37,99,235,0.08);
+      letter-spacing: -0.04em;
+      user-select: none;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    /* left content column */
+    .hero-left {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 64px 80px 28px;
+      max-width: 760px;
+    }
+    /* custom left margin using container logic */
+    .hero-left { padding-left: max(28px, calc((100vw - 1200px) / 2 + 28px)); }
+
+    .hero-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 36px;
+    }
+    .hero-status-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 0 3px rgba(34,197,94,0.2);
+      animation: blink 2.4s infinite;
+      flex-shrink: 0;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.35; }
+    }
+    .hero-status-text {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+    .hero-status-text strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .hero-h1 {
+      font-family: var(--font-h);
+      font-weight: 800;
+      font-size: clamp(38px, 5.2vw, 68px);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .hero-h1-line2 {
+      color: var(--accent);
+      display: block;
+    }
+    /* italic weight shift for the third line — breaks monotony */
+    .hero-h1-line3 {
+      display: block;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--muted);
+      font-size: 0.72em;
+      letter-spacing: -0.01em;
+      margin-top: 6px;
+    }
+
+    .hero-sub {
+      margin-top: 28px;
+      font-size: clamp(15px, 1.6vw, 18px);
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 520px;
+    }
+
+    .hero-actions {
+      margin-top: 40px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .hero-actions .btn { font-size: 15px; padding: 14px 30px; }
+
+    /* city tags — horizontal list, not centered */
+    .hero-cities {
+      margin-top: 52px;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      flex-wrap: wrap;
+      row-gap: 8px;
+    }
+    .hero-cities-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-right: 14px;
+      white-space: nowrap;
+    }
+    .city-tag {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--muted);
+      padding: 4px 12px;
+      border: 1px solid var(--border-lt);
+      border-radius: 100px;
+      margin-right: 8px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .city-tag:hover { border-color: var(--accent); color: var(--accent-lt); }
+
+    /* right stats panel — the asymmetric counterweight */
+    .hero-right {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: rgba(255,255,255,0.04);
+      border-left: 1px solid rgba(255,255,255,0.1);
+      padding: 80px 36px;
+      gap: 0;
+    }
+
+    /* huge outlined year number — decorative */
+    .hero-year-block {
+      margin-bottom: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-year-num {
+      font-family: var(--font-h);
+      font-weight: 800;
+      font-size: 96px;
+      line-height: 0.9;
+      letter-spacing: -0.04em;
+      color: transparent;
+      -webkit-text-stroke: 1.5px var(--accent);
+      text-stroke: 1.5px var(--accent);
+      display: block;
+    }
+    .hero-year-label {
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-top: 8px;
+      display: block;
+    }
+
+    .hero-stat-list {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .hero-stat-item { }
+    .hero-stat-val {
+      font-family: var(--font-h);
+      font-weight: 800;
+      font-size: 36px;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--text);
+    }
+    .hero-stat-desc {
+      font-size: 12px;
+      color: var(--dim);
+      margin-top: 4px;
+      line-height: 1.5;
+    }
+
+    /* license badge — trust element at the bottom of panel */
+    .hero-license {
+      margin-top: 40px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+    }
+    .hero-license-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(37,99,235,0.15);
+      border: 1px solid rgba(37,99,235,0.3);
+      border-radius: 4px;
+      padding: 8px 14px;
+    }
+    .hero-license-icon {
+      width: 14px; height: 14px;
+      stroke: var(--accent);
+      fill: none;
+      stroke-width: 2;
+      flex-shrink: 0;
+    }
+    .hero-license-text {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent-lt);
+      letter-spacing: 0.02em;
+    }
+
+    /* ── hero mobile collapse ────────────────────────── */
+    @media (max-width: 768px) {
+      #hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+      .hero-left {
+        padding: 64px 20px 40px 20px;
+      }
+      .hero-right {
+        border-left: none;
+        border-top: 1px solid var(--border);
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 24px;
+        padding: 32px 20px;
+        background: rgba(255,255,255,0.05);
+      }
+      .hero-year-block { display: none; }
+      .hero-stat-list { flex-direction: row; flex-wrap: wrap; gap: 20px; }
+      .hero-stat-item { flex: 0 0 auto; }
+      .hero-stat-val { font-size: 28px; }
+      .hero-license { margin-top: 0; padding-top: 0; border-top: none; }
+    }
+
+    /* ══════════════════════════════════════════════════════
+       SERVICES — EDITORIAL NUMBERED LIST (not a card grid)
+    ══════════════════════════════════════════════════════ */
+    #services {
+      padding: 112px 0 80px;
+      background: var(--bg);
+    }
+
+    .services-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* header: two columns — title left, descriptor right */
+    .services-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: end;
+      margin-bottom: 72px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    .services-title {
+      font-family: var(--font-h);
+      font-weight: 800;
+      font-size: clamp(30px, 3.8vw, 48px);
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      color: var(--text);
+    }
+    .services-title em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--muted);
+    }
+    .services-header-right {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding-left: 20px;
+      border-left: 2px solid var(--accent);
+    }
+    .services-header-body {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* the list itself */
+    .service-rows { }
+
+    .service-row {
+      display: grid;
+      grid-template-columns: 72px 1fr auto;
+      gap: 0 40px;
+      align-items: start;
+      padding: 36px 0;
+      border-bottom: 1px solid var(--border-lt);
+      cursor: default;
+      transition: background 0.2s;
+      border-radius: 4px;
+      position: relative;
+    }
+    /* hover: amber left indicator */
+    .service-row::before {
+      content: '';
+      position: absolute;
+      left: -28px;
+      top: 0; bottom: 0;
+      width: 2px;
+      background: var(--accent);
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform 0.25s ease;
+    }
+    .service-row:hover::before { transform: scaleY(1); }
+    .service-row:hover .svc-num { color: var(--accent); }
+    .service-row:hover .svc-name { color: var(--accent-lt); }
+
+    .svc-num {
+      font-family: var(--font-h);
+      font-weight: 800;
+      font-size: 13px;
+      color: var(--dim);
+      letter-spacing: 0.06em;
+      padding-top: 4px;
+      transition: color 0.2s;
+    }
+
+    .svc-body { }
+    .svc-name {
+      font-family: var(--font-h);
+      font-weight: 700;
+      font-size: clamp(22px, 2.6vw, 30px);
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 12px;
+      transition: color 0.2s;
+      line-height: 1.1;
+    }
+    .svc-desc {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+    .svc-tags {
+      display: flex;
+      gap: 8px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+    .svc-tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--dim);
+      background: var(--bg-card);
+      border: 1px solid var(--border-lt);
+      border-radius: 3px;
+      padding: 4px 10px;
+    }
+
+    .svc-arrow {
+      padding-top: 4px;
+      color: var(--dim);
+      transition: color 0.2s, transform 0.2s;
+      flex-shrink: 0;
+    }
+    .service-row:hover .svc-arrow {
+      color: var(--accent);
+      transform: translate(3px, -2px);
+    }
+    .svc-arrow svg {
+      width: 20px; height: 20px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    @media (max-width: 640px) {
+      .services-header { grid-template-columns: 1fr; gap: 24px; }
+      .services-header-right { padding-left: 14px; }
+      .service-row { grid-template-columns: 44px 1fr; gap: 0 20px; }
+      .svc-arrow { display: none; }
+      .service-row::before { left: -20px; }
+    }
+
+    /* ══════════════════════════════════════════════════════
+       WHY US — INVERTED (cream background — palette break)
+    ══════════════════════════════════════════════════════ */
+    #why-us {
+      background: var(--cream);
+      color: var(--bg);
+      padding: 0;
+      position: relative;
+    }
+
+    .why-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* top strip: full-bleed amber bar with the "why" label */
+    .why-topbar {
+      background: var(--accent);
+      padding: 14px 0;
+    }
+    .why-topbar-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .why-topbar-label {
+      font-family: var(--font-h);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+    .why-topbar-lic {
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.75);
+      letter-spacing: 0.04em;
+    }
+
+    .why-content {
+      padding: 80px 0 80px;
+      display: grid;
+      grid-template-columns: 480px 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .why-headline {
+      font-family: var(--font-h);
+      font-weight: 800;
+      font-size: clamp(32px, 4vw, 52px);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--bg);
+      margin-bottom: 24px;
+    }
+    .why-headline span {
+      color: var(--accent-lt);
+    }
+    .why-lead {
+      font-size: 17px;
+      color: #9CA3AF;
+      line-height: 1.75;
+      margin-bottom: 36px;
+    }
+    .why-left-cta {
+      background: #FFFFFF;
+      color: #111827;
+      border: none;
+    }
+    .why-left-cta:hover { background: #F3F4F6; transform: translateY(-1px); }
+
+    /* right: 3 differentiators as horizontal bars */
+    .why-facts {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .why-fact {
+      padding: 32px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .why-fact:first-child { padding-top: 0; }
+    .why-fact-num {
+      font-family: var(--font-h);
+      font-weight: 800;
+      font-size: 46px;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: var(--accent);
+    }
+    .why-fact-unit {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .why-fact-title {
+      font-family: var(--font-h);
+      font-weight: 700;
+      font-size: 17px;
+      color: var(--bg);
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+    .why-fact-body {
+      font-size: 14px;
+      color: #9CA3AF;
+      line-height: 1.65;
+    }
+
+    @media (max-width: 860px) {
+      .why-content { grid-template-columns: 1fr; gap: 48px; }
+    }
+    @media (max-width: 480px) {
+      .why-inner { padding: 0 20px; }
+      .why-content { padding: 56px 0; }
+      .why-fact { grid-template-columns: 72px 1fr; gap: 16px; }
+      .why-fact-num { font-size: 36px; }
+    }
+
+    /* ══════════════════════════════════════════════════════
+       TESTIMONIALS — ASYMMETRIC (not 3 equal cards)
+    ══════════════════════════════════════════════════════ */
+    #testimonials {
+      background: var(--bg-deep);
+      padding: 112px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    /* faint large quote mark as ambient texture */
+    #testimonials::before {
+      content: '\201C';
+      position: absolute;
+      top: -0.1em;
+      right: 3%;
+      font-family: var(--font-h);
+      font-weight: 800;
+      font-size: 32vw;
+      line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(37,99,235,0.06);
+      text-stroke: 1px rgba(37,99,235,0.06);
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .testimonials-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 28px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .testimonials-header {
+      margin-bottom: 64px;
+    }
+    .testimonials-title {
+      font-family: var(--font-h);
+      font-weight: 800;
+      font-size: clamp(28px, 3.5vw, 44px);
+      letter-spacing: -0.025em;
+      color: var(--text);
+      margin-top: 12px;
+      line-height: 1.1;
+    }
+
+    /* layout: one big + two stacked — intentionally uneven */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .t-card {
+      background: var(--bg-card);
+      padding: 48px 40px;
+      transition: background 0.2s;
+    }
+    .t-card:hover { background: #1F2937; }
+
+    /* featured card spans both rows on left */
+    .t-card-featured {
+      grid-row: 1 / 3;
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 32px;
+    }
+    .t-card-featured .t-quote {
+      font-family: var(--font-h);
+      font-size: clamp(17px, 2vw, 21px);
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.65;
+      letter-spacing: -0.01em;
+    }
+
+    /* small cards on right */
+    .t-card-sm {
+      padding: 36px 32px;
+    }
+    .t-card-sm:first-of-type {
+      border-bottom: 1px solid var(--border);
+    }
+    .t-card-sm .t-quote {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .t-stars {
+      display: flex;
+      gap: 2px;
+      margin-bottom: 20px;
+    }
+    .t-star {
+      font-size: 14px;
+      color: var(--accent);
+    }
+
+    .t-author-wrap {
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    /* avatar initial circle */
+    .t-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: rgba(37,99,235,0.15);
+      border: 1px solid rgba(37,99,235,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-h);
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+    .t-name {
+      font-family: var(--font-h);
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+    .t-detail {
+      font-size: 12px;
+      color: var(--dim);
+      letter-spacing: 0.01em;
+    }
+
+    .t-card-sm .t-author-wrap { margin-top: 20px; padding-top: 18px; }
+
+    @media (max-width: 700px) {
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+      }
+      .t-card-featured { grid-row: auto; border-right: none; border-bottom: 1px solid var(--border); }
+      .t-card { padding: 36px 24px; }
+      .t-card-sm { padding: 28px 24px; }
+    }
+
+    /* ══════════════════════════════════════════════════════
+       CONTACT — LEFT-ALIGNED (breaks the centered pattern)
+    ══════════════════════════════════════════════════════ */
+    #contact {
+      background: var(--bg);
+      padding: 112px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    #contact::after {
+      content: '';
+      position: absolute;
+      right: -5%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(37,99,235,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .contact-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 28px;
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .contact-left { }
+
+    .contact-headline {
+      font-family: var(--font-h);
+      font-weight: 800;
+      font-size: clamp(34px, 4.5vw, 58px);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-top: 16px;
+      margin-bottom: 24px;
+    }
+    .contact-headline .hl-amber { color: var(--accent); }
+
+    .contact-body {
+      font-size: 17px;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 460px;
+      margin-bottom: 40px;
+    }
+
+    .contact-ctas {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .contact-ctas .btn { padding: 15px 32px; font-size: 16px; }
+
+    /* right: contact details as a bordered panel */
+    .contact-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 40px 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .contact-panel-title {
+      font-family: var(--font-h);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+    .contact-detail {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border-lt);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .contact-detail:last-child { border-bottom: none; padding-bottom: 0; }
+    .contact-detail-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .contact-detail-value {
+      font-family: var(--font-h);
+      font-weight: 700;
+      font-size: 17px;
+      color: var(--text);
+      transition: color 0.2s;
+    }
+    a.contact-detail-value:hover { color: var(--accent-lt); }
+    .contact-detail-value.sm { font-size: 14px; font-weight: 500; }
+    .contact-avail {
+      margin-top: 28px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .avail-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #22c55e;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 840px) {
+      .contact-wrap { grid-template-columns: 1fr; gap: 48px; }
+      .contact-panel { max-width: 480px; }
+    }
+    @media (max-width: 480px) {
+      .contact-wrap { padding: 0 20px; }
+      #contact { padding: 72px 0; }
+    }
+
+    /* ══════════════════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════════════════ */
+    #footer {
+      background: var(--bg-deep);
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-upper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 28px 36px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-logo-name {
+      font-family: var(--font-h);
+      font-weight: 800;
+      font-size: 16px;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+    .footer-logo-sub {
+      font-size: 12px;
+      color: var(--dim);
+      margin-top: 3px;
+      letter-spacing: 0.04em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .footer-link {
+      font-size: 14px;
+      color: var(--dim);
+      transition: color 0.2s;
+    }
+    .footer-link:hover { color: var(--accent-lt); }
+
+    .footer-lower {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px 28px;
+      border-top: 1px solid var(--border-lt);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-copy {
+      font-size: 12px;
+      color: var(--dim);
+    }
+    .footer-lic {
+      font-size: 12px;
+      color: var(--dim);
+      letter-spacing: 0.02em;
+    }
+
+    @media (max-width: 480px) {
+      .footer-upper, .footer-lower { padding: 28px 20px; flex-direction: column; }
+      .footer-links { gap: 20px; }
+    }
+
+    /* ══════════════════════════════════════════════════════
+       SCROLL REVEAL
+    ══════════════════════════════════════════════════════ */
+    .r {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .r.on { opacity: 1; transform: none; }
+    .r.d1 { transition-delay: 0.08s; }
+    .r.d2 { transition-delay: 0.16s; }
+    .r.d3 { transition-delay: 0.24s; }
+    .r.d4 { transition-delay: 0.32s; }
+  </style>
+</head>
+
+<body>
+
+<!-- ════════════════════════════════════════════════════
+     NAV
+════════════════════════════════════════════════════ -->
+<header id="nav">
+  <div class="nav-wrap">
+
+    <a href="#hero" class="nav-logo">
+      <span class="nav-logo-name">Premier Construction Co</span>
+      <span class="nav-logo-tag">Cerritos, CA &mdash; Est. 2009</span>
+    </a>
+
+    <nav class="nav-right">
+      <a href="tel:+15625550100" class="nav-phone" aria-label="Call (562) 555-0100">
+        <span class="nav-phone-text">(562) 555-0100</span>
+        <span class="nav-phone-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.0 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 14.92z"/>
+          </svg>
+        </span>
+      </a>
+      <a href="#contact" class="btn btn-amber nav-cta">Get Free Quote</a>
+    </nav>
+
+  </div>
+</header>
+
+<!-- ════════════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-watermark" aria-hidden="true">BUILT</div>
+
+  <!-- LEFT: headline + CTAs -->
+  <div class="hero-left">
+
+    <div class="hero-status">
+      <span class="hero-status-dot"></span>
+      <span class="hero-status-text">Now scheduling estimates &mdash; <strong>48-hr turnaround</strong></span>
+    </div>
+
+    <h1 class="hero-h1">
+      Cerritos'<br />
+      <span class="hero-h1-line2">Most Trusted<br />Builders.</span>
+      <span class="hero-h1-line3">since 2009 — licensed, bonded, on time</span>
+    </h1>
+
+    <p class="hero-sub">
+      We do roofing, remodels, ground-up construction, and commercial build-outs across LA County. Our crews are our own — no strangers handed your job. No deposits taken and phones going quiet.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-amber">Get Free Quote</a>
+      <a href="tel:+15625550100" class="btn btn-ghost">Call (562) 555-0100</a>
+    </div>
+
+    <div class="hero-cities">
+      <span class="hero-cities-label">We serve</span>
+      <span class="city-tag">Cerritos</span>
+      <span class="city-tag">Norwalk</span>
+      <span class="city-tag">Lakewood</span>
+      <span class="city-tag">Downey</span>
+      <span class="city-tag">Long Beach</span>
+    </div>
+
+  </div>
+
+  <!-- RIGHT: stat panel — the asymmetric weight -->
+  <div class="hero-right">
+
+    <div class="hero-year-block" aria-hidden="true">
+      <span class="hero-year-num">15</span>
+      <span class="hero-year-label">Years in LA County</span>
+    </div>
+
+    <div class="hero-stat-list">
+      <div class="hero-stat-item">
+        <div class="hero-stat-val">200+</div>
+        <div class="hero-stat-desc">Projects completed<br />in the greater LA area</div>
+      </div>
+      <div class="hero-stat-item">
+        <div class="hero-stat-val">4.9★</div>
+        <div class="hero-stat-desc">Average client rating<br />across 80+ reviews</div>
+      </div>
+    </div>
+
+    <div class="hero-license">
+      <div class="hero-license-badge">
+        <svg class="hero-license-icon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <polyline points="9 12 11 14 15 10"/>
+        </svg>
+        <span class="hero-license-text">CA Lic #1089742 — Insured</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════
+     SERVICES
+════════════════════════════════════════════════════ -->
+<section id="services">
+  <div class="services-wrap">
+
+    <div class="services-header r">
+      <div>
+        <span class="eyebrow">What We Build</span>
+        <h2 class="services-title">Every trade,<br /><em>one crew.</em></h2>
+      </div>
+      <div class="services-header-right">
+        <p class="services-header-body">We don't flip your job to random subs. Our teams are in-house, background-checked, and have worked together on hundreds of LA County jobs. That's why the work holds up.</p>
+        <a href="#contact" class="btn btn-dark" style="align-self:flex-start;">Request a Scope Call</a>
+      </div>
+    </div>
+
+    <div class="service-rows">
+
+      <div class="service-row r d1">
+        <div class="svc-num">01</div>
+        <div class="svc-body">
+          <div class="svc-name">Roofing</div>
+          <p class="svc-desc">Full tear-offs, overlay installs, torch-down flat roofing, and storm damage repairs. We use manufacturer-certified materials and back every job with a 10-year workmanship warranty — not a handshake promise.</p>
+          <div class="svc-tags">
+            <span class="svc-tag">Tear-Off &amp; Reroof</span>
+            <span class="svc-tag">Storm Damage</span>
+            <span class="svc-tag">Flat &amp; Pitched</span>
+            <span class="svc-tag">10-yr Warranty</span>
+          </div>
+        </div>
+        <div class="svc-arrow">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </div>
+      </div>
+
+      <div class="service-row r d2">
+        <div class="svc-num">02</div>
+        <div class="svc-body">
+          <div class="svc-name">Remodeling</div>
+          <p class="svc-desc">Kitchen gut-outs, master bath rebuilds, room additions, and whole-home renovations. We pull permits, handle framing, electrical coordination, and finishes — designed to move the needle on your home's value.</p>
+          <div class="svc-tags">
+            <span class="svc-tag">Kitchen</span>
+            <span class="svc-tag">Bath</span>
+            <span class="svc-tag">Room Additions</span>
+            <span class="svc-tag">Permit Ready</span>
+          </div>
+        </div>
+        <div class="svc-arrow">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </div>
+      </div>
+
+      <div class="service-row r d3">
+        <div class="svc-num">03</div>
+        <div class="svc-body">
+          <div class="svc-name">New Construction</div>
+          <p class="svc-desc">Ground-up residential builds and ADU construction for homeowners and investors throughout LA County. We handle everything from grading through final inspection — on a schedule you can hold us to.</p>
+          <div class="svc-tags">
+            <span class="svc-tag">Single-Family</span>
+            <span class="svc-tag">ADU / Garage Conversion</span>
+            <span class="svc-tag">Investment Properties</span>
+          </div>
+        </div>
+        <div class="svc-arrow">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </div>
+      </div>
+
+      <div class="service-row r d4">
+        <div class="svc-num">04</div>
+        <div class="svc-body">
+          <div class="svc-name">Commercial</div>
+          <p class="svc-desc">Tenant improvements, retail build-outs, office reconfigurations, and commercial additions. We work around your operating hours, pull commercial permits in LA County, and minimize your business downtime.</p>
+          <div class="svc-tags">
+            <span class="svc-tag">Tenant Improvement</span>
+            <span class="svc-tag">Retail Build-Out</span>
+            <span class="svc-tag">After-Hours Work</span>
+          </div>
+        </div>
+        <div class="svc-arrow">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════
+     WHY US — INVERTED PALETTE
+════════════════════════════════════════════════════ -->
+<section id="why-us">
+
+  <div class="why-topbar">
+    <div class="why-topbar-wrap">
+      <span class="why-topbar-label">Why Premier Construction Co</span>
+      <span class="why-topbar-lic">CA Lic #1089742 &nbsp;·&nbsp; Fully Bonded &amp; Insured</span>
+    </div>
+  </div>
+
+  <div class="why-inner">
+    <div class="why-content">
+
+      <div class="why-left r">
+        <span class="eyebrow" style="color:#60A5FA;">What sets us apart</span>
+        <h2 class="why-headline">
+          Other contractors<br />
+          talk. We <span>deliver.</span>
+        </h2>
+        <p class="why-lead">
+          We've been on job sites in Cerritos, Norwalk, Lakewood, and Downey long enough to know what local homeowners actually need: a crew that shows up on time, communicates before problems become surprises, and doesn't disappear after cashing a deposit check.
+        </p>
+        <a href="#contact" class="btn btn-amber why-left-cta">Get Your Free Estimate</a>
+      </div>
+
+      <div class="why-facts r">
+
+        <div class="why-fact">
+          <div>
+            <div class="why-fact-num">200<span class="why-fact-unit">+</span></div>
+          </div>
+          <div>
+            <div class="why-fact-title">Projects Completed in LA</div>
+            <p class="why-fact-body">From single-family reroofs in Cerritos to multi-unit ADU builds in Norwalk — we have the portfolio to back it up. Ask us for references in your specific neighborhood.</p>
+          </div>
+        </div>
+
+        <div class="why-fact">
+          <div>
+            <div class="why-fact-num">15<span class="why-fact-unit">yr</span></div>
+          </div>
+          <div>
+            <div class="why-fact-title">Serving Greater LA Since 2009</div>
+            <p class="why-fact-body">We've navigated LA County permit offices, HOA requirements, and every code revision since the recession. That institutional knowledge protects your project timeline.</p>
+          </div>
+        </div>
+
+        <div class="why-fact">
+          <div>
+            <div class="why-fact-num" style="font-size:32px;padding-top:6px;">Lic'd</div>
+          </div>
+          <div>
+            <div class="why-fact-title">Licensed, Bonded &amp; Insured</div>
+            <p class="why-fact-body">CA Contractor's License #1089742. Full general liability and workers' comp on every job site. If something goes sideways, you're covered — and we'll own it.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<!-- ════════════════════════════════════════════════════
+     TESTIMONIALS — ASYMMETRIC LAYOUT
+════════════════════════════════════════════════════ -->
+<section id="testimonials">
+  <div class="testimonials-wrap">
+
+    <div class="testimonials-header r">
+      <span class="eyebrow">Client Reviews</span>
+      <h2 class="testimonials-title">Real neighbors.<br />Real projects. Real results.</h2>
+    </div>
+
+    <div class="testimonials-grid r">
+
+      <!-- FEATURED — left, spans full height -->
+      <div class="t-card t-card-featured">
+        <div>
+          <div class="t-stars">
+            <span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span>
+          </div>
+          <p class="t-quote">
+            We got three bids for our roof replacement after last winter's storms. Premier came in with a detailed written scope and actually walked us through what needed to happen and why — none of the other guys did that. Job was done in two days flat. Clean site, no drama. Two rainy seasons later and we haven't seen a single leak. That's the standard I didn't know I could expect from a contractor.
+          </p>
+        </div>
+        <div class="t-author-wrap">
+          <div class="t-avatar">MR</div>
+          <div>
+            <div class="t-name">Marcus &amp; Linda Reyes</div>
+            <div class="t-detail">Full Roof Replacement &mdash; Cerritos, CA</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SMALL TOP -->
+      <div class="t-card t-card-sm">
+        <div class="t-stars">
+          <span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span>
+        </div>
+        <p class="t-quote">They handled my kitchen and master bath at the same time — never felt like chaos. Their PM checked in every morning. Delivered two weeks ahead of schedule. My house looks like it belongs in a magazine.</p>
+        <div class="t-author-wrap">
+          <div class="t-avatar">DF</div>
+          <div>
+            <div class="t-name">Denise Fuentes</div>
+            <div class="t-detail">Kitchen &amp; Bath Remodel &mdash; Norwalk, CA</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SMALL BOTTOM -->
+      <div class="t-card t-card-sm">
+        <div class="t-stars">
+          <span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span>
+        </div>
+        <p class="t-quote">I'm an investor with three units in Lakewood. Premier built an ADU, handled all city permits, and hit every milestone we agreed to. Tenant moved in on the exact date we planned. Already booked them for two more builds.</p>
+        <div class="t-author-wrap">
+          <div class="t-avatar">KO</div>
+          <div>
+            <div class="t-name">Kevin Okafor</div>
+            <div class="t-detail">ADU Construction &mdash; Lakewood, CA</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════
+     CONTACT — LEFT-ALIGNED TWO COLUMN
+════════════════════════════════════════════════════ -->
+<section id="contact">
+  <div class="contact-wrap">
+
+    <div class="contact-left r">
+      <span class="eyebrow">Free Estimates</span>
+      <h2 class="contact-headline">
+        Let's talk about<br />
+        <span class="hl-amber">your project.</span>
+      </h2>
+      <p class="contact-body">
+        We visit the job site, give you a written scope and quote, and answer every question — no pressure, no obligation. Most estimates are scheduled within 48 hours of your call.
+      </p>
+      <div class="contact-ctas">
+        <a href="tel:+15625550100" class="btn btn-amber">Call Now</a>
+        <a href="mailto:info@premierconstructionco.com" class="btn btn-ghost">Get Free Quote</a>
+      </div>
+    </div>
+
+    <div class="contact-panel r d2">
+      <div class="contact-panel-title">Reach Us Directly</div>
+
+      <div class="contact-detail">
+        <span class="contact-detail-label">Phone</span>
+        <a href="tel:+15625550100" class="contact-detail-value">(562) 555-0100</a>
+      </div>
+
+      <div class="contact-detail">
+        <span class="contact-detail-label">Email</span>
+        <a href="mailto:info@premierconstructionco.com" class="contact-detail-value sm">info@premierconstructionco.com</a>
+      </div>
+
+      <div class="contact-detail">
+        <span class="contact-detail-label">Service Area</span>
+        <span class="contact-detail-value sm" style="color:var(--muted);">Cerritos, Norwalk, Lakewood, Downey, Long Beach &amp; surrounding LA County</span>
+      </div>
+
+      <div class="contact-avail">
+        <span class="avail-dot"></span>
+        Scheduling estimates this week &mdash; slots limited
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════════ -->
+<footer id="footer">
+  <div class="footer-upper">
+    <div>
+      <div class="footer-logo-name">Premier Construction Co</div>
+      <div class="footer-logo-sub">Cerritos, CA &mdash; Serving LA County since 2009</div>
+    </div>
+    <div class="footer-links">
+      <a href="tel:+15625550100" class="footer-link">(562) 555-0100</a>
+      <a href="mailto:info@premierconstructionco.com" class="footer-link">info@premierconstructionco.com</a>
+      <a href="#hero" class="footer-link">Back to Top ↑</a>
+    </div>
+  </div>
+  <div class="footer-lower">
+    <span class="footer-copy">&copy; 2026 Premier Construction Co. All rights reserved.</span>
+    <span class="footer-lic">CA Contractor's License #1089742</span>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var els = document.querySelectorAll('.r');
+    if (!els.length || !window.IntersectionObserver) {
+      els.forEach(function (el) { el.classList.add('on'); });
+      return;
+    }
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
+    els.forEach(function (el) { obs.observe(el); });
+  })();
+</script>
+
+</body>
+</html>
